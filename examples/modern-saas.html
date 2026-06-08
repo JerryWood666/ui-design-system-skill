@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modern SaaS Demo</title>
+  <link rel="stylesheet" href="../tokens/ui-tokens.css">
+  <style>
+    :root {
+      --bg: #080b10;
+      --surface: #10151f;
+      --surface-2: #141b27;
+      --text: #edf2ff;
+      --muted: #8d98ad;
+      --border: #253044;
+      --accent: #5eead4;
+      --danger: #fb7185;
+      --success: #86efac;
+      --panel-radius: 14px;
+      --button-radius: 10px;
+      --input-bg: #0c111a;
+    }
+    body {
+      background: radial-gradient(circle at 20% 0%, rgba(94, 234, 212, .12), transparent 34%), var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .app {
+      display: grid;
+      grid-template-columns: 248px minmax(0, 1fr) 320px;
+      min-height: 100vh;
+    }
+    .sidebar {
+      border-right: 1px solid var(--border);
+      padding: 20px;
+    }
+    .brand {
+      align-items: center;
+      display: flex;
+      font-weight: 800;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .mark {
+      background: var(--accent);
+      border-radius: 8px;
+      box-shadow: 0 0 28px rgba(94, 234, 212, .35);
+      height: 28px;
+      width: 28px;
+    }
+    .nav {
+      display: grid;
+      gap: 6px;
+    }
+    .nav a {
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 10px 12px;
+    }
+    .nav a.active,
+    .nav a:hover {
+      background: #111a27;
+      color: var(--text);
+    }
+    .main {
+      padding: 24px;
+    }
+    .topbar {
+      align-items: center;
+      display: flex;
+      gap: 12px;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .search {
+      max-width: 420px;
+      position: relative;
+      width: 100%;
+    }
+    .search span {
+      color: var(--muted);
+      font-size: 12px;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+    .primary {
+      background: var(--accent);
+      color: #04201c;
+    }
+    .ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+    h1 {
+      font-size: var(--text-3xl);
+      line-height: 1.05;
+      margin: 0;
+    }
+    .sub {
+      color: var(--muted);
+      margin: 8px 0 0;
+    }
+    .metrics {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin: 24px 0;
+    }
+    .metric-card {
+      padding: 18px;
+    }
+    .metric-card small {
+      color: var(--muted);
+      display: block;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .metric-card b {
+      display: block;
+      font-size: 30px;
+      line-height: 1;
+    }
+    .work {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: minmax(0, 1fr);
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th,
+    td {
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      padding: 14px 16px;
+      text-align: left;
+    }
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .inspector {
+      background: #0b1018;
+      border-left: 1px solid var(--border);
+      padding: 24px;
+    }
+    .issue {
+      margin-top: 22px;
+      padding: 16px;
+    }
+    .issue h2 {
+      font-size: 18px;
+      margin: 0 0 8px;
+    }
+    .issue p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 16px;
+    }
+    .ok {
+      color: var(--success);
+    }
+    .risk {
+      color: var(--danger);
+    }
+    @media (max-width: 1100px) {
+      .app {
+        grid-template-columns: 210px minmax(0, 1fr);
+      }
+      .inspector {
+        display: none;
+      }
+    }
+    @media (max-width: 760px) {
+      .app {
+        display: block;
+      }
+      .sidebar {
+        border-bottom: 1px solid var(--border);
+        border-right: 0;
+      }
+      .nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .topbar,
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+      .topbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+      table {
+        min-width: 620px;
+      }
+      .table-wrap {
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><span class="mark"></span> ReviewOS</div>
+      <nav class="nav" aria-label="主导航">
+        <a class="active" href="#">Overview</a>
+        <a href="#">Reviews</a>
+        <a href="#">Risks</a>
+        <a href="#">Repos</a>
+        <a href="#">Rules</a>
+        <a href="#">Settings</a>
+      </nav>
+    </aside>
+    <main class="main">
+      <div class="topbar">
+        <div class="search">
+          <label class="sr-only" for="cmd">搜索</label>
+          <input id="cmd" class="ui-input" placeholder="Search issues, repos, reviewers">
+          <span>⌘K</span>
+        </div>
+        <button class="ui-button primary">Run Review</button>
+      </div>
+      <h1>Code quality command center</h1>
+      <p class="sub">17 repositories monitored. 6 issues need a human decision before merge.</p>
+      <section class="metrics" aria-label="指标">
+        <div class="ui-panel metric-card"><small>Open risks</small><b class="metric">24</b></div>
+        <div class="ui-panel metric-card"><small>Review latency</small><b class="metric">18m</b></div>
+        <div class="ui-panel metric-card"><small>Auto-fixed</small><b class="metric">71%</b></div>
+      </section>
+      <section class="ui-panel table-wrap">
+        <table>
+          <thead>
+            <tr><th>Issue</th><th>Repo</th><th>Severity</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Auth callback accepts stale nonce</td><td>billing-api</td><td><span class="risk">High</span></td><td>Needs owner</td></tr>
+            <tr><td>Empty state copy missing</td><td>web-console</td><td>Medium</td><td>Draft fix</td></tr>
+            <tr><td>Chart bundle exceeds budget</td><td>analytics</td><td>Medium</td><td>Queued</td></tr>
+            <tr><td>Settings drawer lacks focus trap</td><td>admin-ui</td><td><span class="ok">Low</span></td><td>Suggested</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+    <aside class="inspector">
+      <span class="ui-chip"><span class="dot"></span> Live inspection</span>
+      <div class="ui-panel issue">
+        <h2>Auth callback accepts stale nonce</h2>
+        <p>Detected in `billing-api`. The patch is small, but the blast radius is account-level.</p>
+        <button class="ui-button primary">Assign fix</button>
+        <button class="ui-button ghost">Open diff</button>
+      </div>
+    </aside>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Console Demo</title>
+  <link rel="stylesheet" href="../tokens/ui-tokens.css">
+  <style>
+    :root {
+      --bg: #f4f6f9;
+      --surface: #ffffff;
+      --text: #182033;
+      --muted: #697386;
+      --border: #dfe5ee;
+      --accent: #1f6feb;
+      --danger: #c2410c;
+      --success: #15803d;
+      --panel-radius: 6px;
+      --button-radius: 6px;
+      --input-height: 36px;
+      --button-height: 36px;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 232px minmax(0, 1fr);
+      min-height: 100vh;
+    }
+    .sidebar {
+      background: #101827;
+      color: #d8dee9;
+      padding: 18px;
+    }
+    .brand {
+      color: #fff;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+    .sidebar a {
+      border-radius: 6px;
+      color: #aeb8c8;
+      display: block;
+      font-size: 14px;
+      padding: 9px 10px;
+    }
+    .sidebar a.active,
+    .sidebar a:hover {
+      background: #1d2a3e;
+      color: #fff;
+    }
+    .main {
+      min-width: 0;
+    }
+    .header {
+      align-items: center;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 22px;
+    }
+    .crumb {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .content {
+      padding: 22px;
+    }
+    h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+    .sub {
+      color: var(--muted);
+      margin: 4px 0 0;
+    }
+    .primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .secondary {
+      background: #fff;
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .filters {
+      align-items: end;
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1.4fr 1fr 1fr auto;
+      margin: 18px 0;
+      padding: 14px;
+    }
+    label {
+      color: var(--muted);
+      display: grid;
+      font-size: 12px;
+      font-weight: 700;
+      gap: 6px;
+    }
+    .stats {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-bottom: 14px;
+    }
+    .stat {
+      padding: 14px;
+    }
+    .stat small {
+      color: var(--muted);
+      display: block;
+      font-weight: 700;
+    }
+    .stat b {
+      display: block;
+      font-size: 24px;
+      margin-top: 6px;
+    }
+    .table-wrap {
+      overflow-x: auto;
+    }
+    table {
+      border-collapse: collapse;
+      min-width: 760px;
+      width: 100%;
+    }
+    th,
+    td {
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      height: 48px;
+      padding: 0 14px;
+      text-align: left;
+    }
+    th {
+      background: #f8fafc;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .status {
+      border-radius: 999px;
+      display: inline-flex;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 3px 8px;
+    }
+    .paid {
+      background: #dcfce7;
+      color: var(--success);
+    }
+    .review {
+      background: #ffedd5;
+      color: var(--danger);
+    }
+    .pending {
+      background: #e0ecff;
+      color: #1d4ed8;
+    }
+    @media (max-width: 920px) {
+      .layout {
+        display: block;
+      }
+      .sidebar {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+      }
+      .brand {
+        margin: 8px 14px 0 0;
+        white-space: nowrap;
+      }
+      .sidebar a {
+        white-space: nowrap;
+      }
+      .filters,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+      .header {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">OpsPanel</div>
+      <a class="active" href="#">Orders</a>
+      <a href="#">Customers</a>
+      <a href="#">Inventory</a>
+      <a href="#">Reports</a>
+      <a href="#">Settings</a>
+    </aside>
+    <main class="main">
+      <header class="header">
+        <div>
+          <div class="crumb">Dashboard / Orders</div>
+          <h1>Order operations</h1>
+          <p class="sub">Manage payments, fulfillment and exception queues.</p>
+        </div>
+        <button class="ui-button primary">Export CSV</button>
+      </header>
+      <section class="content">
+        <div class="stats">
+          <div class="ui-panel stat"><small>Today revenue</small><b class="metric">$42,810</b></div>
+          <div class="ui-panel stat"><small>Open orders</small><b class="metric">318</b></div>
+          <div class="ui-panel stat"><small>Exceptions</small><b class="metric">12</b></div>
+          <div class="ui-panel stat"><small>SLA hit rate</small><b class="metric">97.4%</b></div>
+        </div>
+        <form class="ui-panel filters">
+          <label>Search<input class="ui-input" placeholder="Order id or customer"></label>
+          <label>Status<select class="ui-input"><option>All statuses</option><option>Review</option><option>Paid</option></select></label>
+          <label>Region<select class="ui-input"><option>All regions</option><option>North</option><option>South</option></select></label>
+          <button class="ui-button secondary" type="button">Apply</button>
+        </form>
+        <section class="ui-panel table-wrap">
+          <table>
+            <thead>
+              <tr><th>Order</th><th>Customer</th><th>Status</th><th>Amount</th><th>Owner</th><th>Updated</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>#10482</td><td>Northwind Labs</td><td><span class="status review">Review</span></td><td class="metric">$8,400</td><td>Anna</td><td>6 min ago</td></tr>
+              <tr><td>#10481</td><td>Stone River</td><td><span class="status paid">Paid</span></td><td class="metric">$2,180</td><td>Jie</td><td>14 min ago</td></tr>
+              <tr><td>#10480</td><td>Bright Foods</td><td><span class="status pending">Pending</span></td><td class="metric">$960</td><td>Mario</td><td>28 min ago</td></tr>
+              <tr><td>#10479</td><td>Evergreen Co.</td><td><span class="status paid">Paid</span></td><td class="metric">$12,300</td><td>Wen</td><td>41 min ago</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+

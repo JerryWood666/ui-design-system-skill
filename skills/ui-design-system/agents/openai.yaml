@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Design System"
+  short_description: "Reusable UI style specs for Codex-built software"
+  default_prompt: "Use $ui-design-system to design and implement a polished software interface in an agreed visual style."

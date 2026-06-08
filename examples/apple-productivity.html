@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apple-like Productivity Demo</title>
+  <link rel="stylesheet" href="../tokens/ui-tokens.css">
+  <style>
+    :root {
+      --bg: #eef1f5;
+      --surface: rgba(255, 255, 255, .72);
+      --text: #172033;
+      --muted: #687386;
+      --border: rgba(124, 138, 160, .24);
+      --accent: #2563eb;
+      --panel-radius: 22px;
+      --button-radius: 12px;
+      --panel-shadow: 0 24px 70px rgba(48, 61, 84, .14);
+    }
+    body {
+      background: linear-gradient(145deg, #eef1f5, #f8fafc 48%, #e7edf8);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .window {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      margin: 28px auto;
+      max-width: 1180px;
+      min-height: calc(100vh - 56px);
+      overflow: hidden;
+    }
+    .sidebar,
+    .content {
+      backdrop-filter: blur(24px);
+    }
+    .sidebar {
+      background: rgba(246, 248, 252, .72);
+      border-right: 1px solid var(--border);
+      padding: 20px;
+    }
+    .traffic {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .traffic span {
+      border-radius: 50%;
+      height: 12px;
+      width: 12px;
+    }
+    .red { background: #ff5f57; }
+    .yellow { background: #febc2e; }
+    .green { background: #28c840; }
+    .side-title {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      margin: 24px 0 8px;
+      text-transform: uppercase;
+    }
+    .item {
+      border-radius: 12px;
+      color: #425067;
+      display: block;
+      padding: 9px 10px;
+    }
+    .item.active,
+    .item:hover {
+      background: rgba(37, 99, 235, .1);
+      color: #153f9d;
+    }
+    .content {
+      background: rgba(255, 255, 255, .56);
+      padding: 26px;
+    }
+    .toolbar {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 34px;
+    }
+    .segmented {
+      background: rgba(221, 228, 239, .76);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      display: flex;
+      padding: 3px;
+    }
+    .segmented button {
+      background: transparent;
+      border: 0;
+      border-radius: 10px;
+      color: var(--muted);
+      height: 32px;
+      padding: 0 14px;
+    }
+    .segmented button.active {
+      background: rgba(255, 255, 255, .9);
+      box-shadow: 0 6px 18px rgba(32, 45, 66, .12);
+      color: var(--text);
+    }
+    .primary {
+      background: #1d4ed8;
+      color: white;
+    }
+    h1 {
+      font-size: var(--text-3xl);
+      line-height: 1.08;
+      margin: 0 0 8px;
+    }
+    .lead {
+      color: var(--muted);
+      margin: 0;
+    }
+    .board {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1.1fr .9fr;
+      margin-top: 28px;
+    }
+    .focus-card {
+      padding: 26px;
+    }
+    .focus-card h2 {
+      font-size: 22px;
+      margin: 0 0 12px;
+    }
+    .list {
+      display: grid;
+      gap: 10px;
+    }
+    .task {
+      align-items: center;
+      background: rgba(255, 255, 255, .6);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      padding: 14px;
+    }
+    .task span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .calendar {
+      padding: 22px;
+    }
+    .days {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(7, 1fr);
+      margin-top: 18px;
+    }
+    .days div {
+      align-content: center;
+      aspect-ratio: 1;
+      background: rgba(255, 255, 255, .54);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      color: var(--muted);
+      display: grid;
+      font-size: 13px;
+      justify-content: center;
+    }
+    .days .today {
+      background: #1d4ed8;
+      color: white;
+    }
+    @media (max-width: 860px) {
+      .window {
+        display: block;
+        margin: 0;
+        min-height: 100vh;
+      }
+      .board {
+        grid-template-columns: 1fr;
+      }
+      .toolbar {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="ui-panel window">
+    <aside class="sidebar">
+      <div class="traffic"><span class="red"></span><span class="yellow"></span><span class="green"></span></div>
+      <div class="side-title">Spaces</div>
+      <a class="item active" href="#">Today</a>
+      <a class="item" href="#">Writing</a>
+      <a class="item" href="#">Design system</a>
+      <a class="item" href="#">Archive</a>
+      <div class="side-title">Focus</div>
+      <a class="item" href="#">Deep work</a>
+      <a class="item" href="#">Review queue</a>
+    </aside>
+    <section class="content">
+      <div class="toolbar">
+        <div class="segmented" role="tablist" aria-label="视图">
+          <button class="active">Day</button>
+          <button>Week</button>
+          <button>Month</button>
+        </div>
+        <button class="ui-button primary">New Focus Block</button>
+      </div>
+      <h1>Good morning, Jie</h1>
+      <p class="lead">Your schedule has two protected blocks and one review window.</p>
+      <div class="board">
+        <section class="ui-panel focus-card">
+          <h2>Deep work block</h2>
+          <p class="lead">09:30 - 11:10 · UI specification library</p>
+          <div class="list" style="margin-top:22px">
+            <div class="task"><strong>Define visual taxonomy</strong><span>42 min</span></div>
+            <div class="task"><strong>Write component states</strong><span>28 min</span></div>
+            <div class="task"><strong>Screenshot review</strong><span>15 min</span></div>
+          </div>
+        </section>
+        <section class="ui-panel calendar">
+          <strong>June 2026</strong>
+          <div class="days" aria-label="日历">
+            <div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div class="today">8</div>
+            <div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
