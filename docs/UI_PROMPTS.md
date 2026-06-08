@@ -1,6 +1,6 @@
-# Codex UI Prompts
+# UI Prompts
 
-把下面片段复制到 Codex 请求里，可以让生成结果更稳定。
+把下面片段复制到 AI 编程助手的请求里，可以让生成结果更稳定。
 
 ## Base Prompt
 
@@ -30,4 +30,3 @@
 ```text
 做一个 AI 代码审查工具的 dashboard，使用 Modern SaaS / AI Tool 风格。核心用户是独立开发者，主任务是查看本周代码质量和待处理风险。信息密度中高。需要 sidebar、metric cards、issue table、right inspector、command button、empty/loading/error 状态。
 ```
-

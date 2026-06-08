@@ -1,11 +1,11 @@
 ---
 name: ui-design-system
-description: Reusable UI design-system workflow for Codex-built software. Use when designing or implementing polished product UI, choosing a visual style, creating frontend pages/components, turning an agreed style such as Apple-like, Modern SaaS, Enterprise Admin, Chinese Classical, Editorial, Luxury, Brutalist, Data/Finance, Health, or Industrial Console into concrete tokens, components, layouts, states, and screenshot acceptance criteria.
+description: Reusable UI design-system workflow for AI-assisted software development. Use when designing or implementing polished product UI, choosing a visual style, creating frontend pages/components, turning an agreed style such as Apple-like, Modern SaaS, Enterprise Admin, Chinese Classical, Editorial, Luxury, Brutalist, Data/Finance, Health, or Industrial Console into concrete tokens, components, layouts, states, and screenshot acceptance criteria.
 ---
 
 # UI Design System
 
-Use this skill to turn an agreed visual style into buildable frontend decisions. The goal is to prevent generic UI output by making Codex select a style, load the right rules, implement with reusable tokens, and verify the result visually.
+Use this skill to turn an agreed visual style into buildable frontend decisions. The goal is to prevent generic UI output by selecting a style, loading the right rules, implementing with reusable tokens, and verifying the result visually.
 
 ## Workflow
 
@@ -14,7 +14,7 @@ Use this skill to turn an agreed visual style into buildable frontend decisions.
 3. Load only the relevant reference files:
    - Use `references/style-taxonomy.md` for style selection and style-specific rules.
    - Use `references/component-spec.md` before implementing components, forms, tables, dialogs, navigation, or stateful UI.
-   - Use `references/codex-prompts.md` when the user wants reusable prompts for future Codex sessions.
+   - Use `references/ui-prompts.md` when the user wants reusable prompts for future AI-assisted development sessions.
 4. Implement the UI with explicit tokens for color, typography, spacing, radius, shadow, border, and motion.
 5. Include expected states: hover, active, focus-visible, disabled, loading, empty, and error where relevant.
 6. Verify desktop and mobile screenshots. Fix text overflow, layout overlap, blank canvases, weak contrast, and generic template aesthetics.

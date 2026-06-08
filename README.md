@@ -1,27 +1,27 @@
 # UI Design System Skill
 
-这是一个给 Codex 用的“UI 设计风格助手”。
+这是一个“UI 设计风格技能”。
 
-当你用 Codex 做软件时，可以先告诉 Codex：**我要用什么风格**。然后让它调用这个技能，按照对应的审美、页面结构和组件规范来做界面。
+当你用 AI 编程助手做软件时，可以先告诉它：**我要用什么风格**。然后让它使用这个技能，按照对应的审美、页面结构和组件规范来做界面。
 
 简单说：  
-**你负责说清楚产品和风格，Codex 负责按这套规范把界面做得更好看、更统一。**
+**你负责说清楚产品和风格，AI 负责编写更好看、更统一的界面。**
 
 ## 怎么使用
 
 ### 第一步：安装
 
-把这个仓库里的 `skills/ui-design-system` 放到你的 Codex 技能目录里。
+把这个仓库里的 `skills/ui-design-system` 放到你的技能目录里。
 
-如果你不确定怎么放，可以直接把下面这句话发给 Codex：
+如果你不确定怎么安装，可以直接把下面这句话发给你的 AI 编程助手：
 
 ```text
-请帮我把这个仓库里的 skills/ui-design-system 安装成 Codex 技能。
+请帮我把这个仓库里的 skills/ui-design-system 安装成可用技能。
 ```
 
 ### 第二步：开发时这样说
 
-在你让 Codex 开发页面或软件前，先说：
+在你让 AI 开发页面或软件前，先说：
 
 ```text
 使用 $ui-design-system。
@@ -53,7 +53,7 @@
 
 ## 不知道选什么风格怎么办
 
-你可以这样问 Codex：
+你可以这样问：
 
 ```text
 使用 $ui-design-system。
@@ -127,23 +127,23 @@
 
 ![Admin Console mobile](./screenshots/admin-console-mobile.png)
 
-## 这个技能会帮 Codex 做什么
+## 这个技能会做什么
 
-它会提醒 Codex：
+它会帮助 AI：
 
 - 先确认软件适合什么风格
 - 不要做千篇一律的普通页面
 - 页面要像真实软件，而不是宣传海报
 - 按风格选择颜色、字体、间距、圆角和布局
-- 需要考虑按钮、表单、表格、弹窗、空状态、加载状态、错误状态
+- 考虑按钮、表单、表格、弹窗、空状态、加载状态、错误状态
 - 做完后检查桌面和手机上的显示效果
 
 ## 仓库里有什么
 
-- [skills/ui-design-system](./skills/ui-design-system)：真正给 Codex 使用的技能
+- [skills/ui-design-system](./skills/ui-design-system)：真正的技能目录
 - [docs/UI_STYLE_TAXONOMY.md](./docs/UI_STYLE_TAXONOMY.md)：风格说明
 - [docs/UI_COMPONENT_SPEC.md](./docs/UI_COMPONENT_SPEC.md)：组件规范
-- [docs/CODEX_UI_PROMPTS.md](./docs/CODEX_UI_PROMPTS.md)：可复制的提示词
+- [docs/UI_PROMPTS.md](./docs/UI_PROMPTS.md)：可复制的提示词
 - [examples](./examples)：HTML 样例页面
 - [screenshots](./screenshots)：样例截图
 
