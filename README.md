@@ -1,103 +1,160 @@
 # UI Design System Skill
 
-一个面向独立开发者和 Codex 工作流的 UI 规范库。它把审美判断、组件规则、页面范式和 Codex 可执行提示沉淀成可复用 skill，帮助你在大型软件开发中先约定风格，再稳定生成高质量 UI。
+这是一个给 Codex 用的“UI 设计风格助手”。
 
-## 适合什么时候用
+当你用 Codex 做软件时，可以先告诉 Codex：**我要用什么风格**。然后让它调用这个技能，按照对应的审美、页面结构和组件规范来做界面。
 
-- 你正在用 Codex 开发 Web/App/桌面软件，需要更稳定的 UI 审美。
-- 你已经约定了风格，例如 Apple-like、Modern SaaS、中式古典、企业后台。
-- 你希望 Codex 在实现页面前先加载风格规范、组件规则和验收标准。
-- 你想把 shadcn/ui、Radix、Headless UI 这类能力变成自己的可复用设计系统。
+简单说：  
+**你负责说清楚产品和风格，Codex 负责按这套规范把界面做得更好看、更统一。**
 
-## 安装到 Codex
+## 怎么使用
 
-将 skill 目录复制到 Codex skills 目录：
+### 第一步：安装
 
-```bash
-mkdir -p ~/.codex/skills
-cp -R skills/ui-design-system ~/.codex/skills/
-```
+把这个仓库里的 `skills/ui-design-system` 放到你的 Codex 技能目录里。
 
-之后在 Codex 中这样调用：
+如果你不确定怎么放，可以直接把下面这句话发给 Codex：
 
 ```text
-使用 $ui-design-system。我要做一个 AI 代码审查工具，风格选择 Modern SaaS / AI Tool。请先加载对应风格规则，再实现 dashboard、issue table、right inspector 和 empty/loading/error 状态。
+请帮我把这个仓库里的 skills/ui-design-system 安装成 Codex 技能。
 ```
 
-或者：
+### 第二步：开发时这样说
+
+在你让 Codex 开发页面或软件前，先说：
 
 ```text
-使用 $ui-design-system。我要做一个中式古典风格的文旅内容产品，不要堆纹样，重点是宣纸、宋体、朱砂、注释栏和阅读节奏。请实现首页和文章页。
+使用 $ui-design-system。
 ```
 
-## 仓库结构
+然后告诉它三件事：
+
+1. 你要做什么软件
+2. 你想要什么风格
+3. 你希望先做哪个页面
+
+比如：
 
 ```text
-.
-├── skills/ui-design-system/       # Codex skill，可复制安装
-│   ├── SKILL.md                   # 运行时工作流
-│   ├── agents/openai.yaml         # Codex UI 元数据
-│   ├── references/                # 风格、组件、prompt 规范
-│   └── assets/                    # tokens 和 HTML 样例
-├── docs/                          # 面向人的规范文档
-├── tokens/                        # 根目录 demo 使用的共享 CSS tokens
-├── examples/                      # 可直接打开的 HTML 样例
-└── screenshots/                   # 桌面和移动端截图
+使用 $ui-design-system。
+我要做一个 AI 代码审查工具。
+风格用现代 SaaS / AI 工具风格。
+请先做首页工作台。
 ```
 
-## GitHub / 开源生态参考
+再比如：
 
-- [shadcn/ui](https://github.com/shadcn-ui/ui): 可复制源码的组件分发方式，适合构建自己的组件库。
-- [Radix Primitives](https://github.com/radix-ui/primitives): 低层、可访问、无样式交互基座。
-- [Headless UI](https://github.com/tailwindlabs/headlessui): 无样式、可访问组件，适合 Tailwind 生态。
-- [Mantine](https://github.com/mantinedev/mantine): 完整 React 组件与 hooks 库，适合快速开发。
-- [Ant Design](https://github.com/ant-design/ant-design): 企业级中后台和数据密集型产品参考。
-- [MUI](https://github.com/mui/material-ui): 成熟 Material Design 组件体系。
-- [HeroUI](https://github.com/heroui-inc/heroui): 现代 React/Tailwind 组件库，适合 SaaS 与 AI 产品。
+```text
+使用 $ui-design-system。
+我要做一个中式古典风格的文旅内容产品。
+重点是宣纸、宋体、朱砂、留白和阅读感。
+请先做首页和文章页。
+```
 
-## 核心规范
+## 不知道选什么风格怎么办
 
-- [风格谱系](./docs/UI_STYLE_TAXONOMY.md)
-- [组件规范](./docs/UI_COMPONENT_SPEC.md)
-- [Codex 使用提示](./docs/CODEX_UI_PROMPTS.md)
-- [共享 CSS tokens](./tokens/ui-tokens.css)
-- [HTML 样例入口](./examples/index.html)
+你可以这样问 Codex：
 
-## HTML 样例
+```text
+使用 $ui-design-system。
+我要做一个个人效率软件，但我不知道适合什么 UI 风格。
+请给我 3 个风格方向，并说明适合原因。
+```
 
-这些页面是静态 HTML，可以直接打开 [examples/index.html](./examples/index.html)。
+选好后再继续开发：
 
-### Modern SaaS / AI Tool
+```text
+我选择 Apple-like 风格。
+请按这个风格继续设计并实现页面。
+```
 
-适合 AI 工具、开发者工具、代码审查、自动化工作台。
+## 当前支持的常用风格
+
+- **现代 SaaS / AI 工具风格**：适合 AI 工具、开发者工具、后台工作台
+- **Apple-like 风格**：适合个人效率、日程、创作者工具
+- **企业后台风格**：适合 CRM、订单系统、管理后台、数据看板
+- **中式古典风格**：适合文旅、茶、书法、古籍、内容产品
+- **杂志 / 内容风格**：适合博客、作品集、研究报告
+- **高端品牌风格**：适合高端服务、品牌官网、作品展示
+- **新粗野主义风格**：适合年轻化、创意类、实验性产品
+- **数据 / 金融风格**：适合财务、交易、分析、指标监控
+- **健康 / 平静风格**：适合健康、心理、冥想、生活方式产品
+- **工业控制台风格**：适合监控、运维、IoT、工程系统
+
+完整说明在 [风格谱系](./docs/UI_STYLE_TAXONOMY.md)。
+
+## 推荐说法
+
+你可以把下面这段当作模板：
+
+```text
+使用 $ui-design-system。
+我要做【产品类型】。
+用户是【目标用户】。
+风格用【风格名称】。
+请先做【页面名称】。
+要求页面真实可用，不要只做展示页。
+```
+
+例子：
+
+```text
+使用 $ui-design-system。
+我要做一个面向独立开发者的项目管理工具。
+用户是一个人做产品的开发者。
+风格用现代 SaaS / AI 工具风格。
+请先做项目列表页和项目详情页。
+要求页面真实可用，不要只做展示页。
+```
+
+## 看看效果
+
+可以直接打开 [examples/index.html](./examples/index.html) 查看样例。
+
+### 现代 SaaS / AI 工具风格
 
 ![Modern SaaS desktop](./screenshots/modern-saas-desktop.png)
 
-### Apple-like Productivity
-
-适合个人效率、日程、创作者工具和 macOS 气质应用。
+### Apple-like 风格
 
 ![Apple-like mobile](./screenshots/apple-productivity-mobile.png)
 
-### Chinese Classical
-
-适合文旅、茶、书法、古籍、内容产品。重点是宣纸、宋体、朱砂、注释栏和留白，不是堆纹样。
+### 中式古典风格
 
 ![Chinese Classical desktop](./screenshots/chinese-classical-desktop.png)
 
-### Admin Console
-
-适合企业后台、订单、CRM、运营系统、数据密集型产品。
+### 企业后台风格
 
 ![Admin Console mobile](./screenshots/admin-console-mobile.png)
 
-## 推荐工作流
+## 这个技能会帮 Codex 做什么
 
-1. 先让 Codex 使用 `$ui-design-system` 选择或确认风格。
-2. 再让 Codex 读取风格谱系和组件规范。
-3. 实现页面时要求包含组件状态和响应式。
-4. 最后用截图验收桌面和移动端。
+它会提醒 Codex：
 
-## 验证记录
+- 先确认软件适合什么风格
+- 不要做千篇一律的普通页面
+- 页面要像真实软件，而不是宣传海报
+- 按风格选择颜色、字体、间距、圆角和布局
+- 需要考虑按钮、表单、表格、弹窗、空状态、加载状态、错误状态
+- 做完后检查桌面和手机上的显示效果
 
-已用 Playwright 对 5 个页面进行 1366px 桌面和 390px 移动端截图检查，未发现页面级横向溢出。截图保存在 [screenshots](./screenshots)。
+## 仓库里有什么
+
+- [skills/ui-design-system](./skills/ui-design-system)：真正给 Codex 使用的技能
+- [docs/UI_STYLE_TAXONOMY.md](./docs/UI_STYLE_TAXONOMY.md)：风格说明
+- [docs/UI_COMPONENT_SPEC.md](./docs/UI_COMPONENT_SPEC.md)：组件规范
+- [docs/CODEX_UI_PROMPTS.md](./docs/CODEX_UI_PROMPTS.md)：可复制的提示词
+- [examples](./examples)：HTML 样例页面
+- [screenshots](./screenshots)：样例截图
+
+## 参考来源
+
+这个规范参考了常见开源 UI 体系的思路，包括：
+
+- [shadcn/ui](https://github.com/shadcn-ui/ui)
+- [Radix Primitives](https://github.com/radix-ui/primitives)
+- [Headless UI](https://github.com/tailwindlabs/headlessui)
+- [Mantine](https://github.com/mantinedev/mantine)
+- [Ant Design](https://github.com/ant-design/ant-design)
+- [MUI](https://github.com/mui/material-ui)
+- [HeroUI](https://github.com/heroui-inc/heroui)
