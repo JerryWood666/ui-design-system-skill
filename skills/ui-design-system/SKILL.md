@@ -1,6 +1,6 @@
 ---
 name: ui-design-system
-description: Reusable UI design-system workflow for AI-assisted software development. Use when designing or implementing polished product UI, choosing a visual style, creating frontend pages/components, turning an agreed style such as Apple-like, Modern SaaS, Enterprise Admin, Chinese Classical, Editorial, Luxury, Brutalist, Data/Finance, Health, or Industrial Console into concrete tokens, components, layouts, states, and screenshot acceptance criteria.
+description: Reusable UI design-system workflow for AI-assisted software development. Use when designing or implementing polished product UI, choosing a visual style, creating frontend pages/components, turning an agreed style such as Modern SaaS, Apple-like, Enterprise Admin, Material, Fluent, Notion-like, Linear-like, Data/Finance, Industrial Console, Cyberpunk, Chinese Classical, New Chinese, Japanese Minimal, Korean Commerce, Editorial, Luxury, Neo Brutalism, Brutalist, Retro/Y2K, Playful, Health, Education, Government, or Gaming into concrete tokens, components, layouts, states, and screenshot acceptance criteria.
 ---
 
 # UI Design System
